@@ -48,3 +48,27 @@ _remove our view composer_
 Route::get('other', function() {
 	return view('other');
 });`
+
+## 3
+
+**Elixir** now compiles and concatenates seperate .css .js files.
+`elixir(function(mix) {
+	mix.less(['app.less', 'other.less']);
+});`
+now makes one _app.css_ file.
+
+**Elixir** also provides _ECMS6_ support.
+`elixir(function(mix) {
+	mix.scripts(['one.js', 'two.js']);
+});`
+now makes one _all.js_ file.  It can also be placed somewhere else:
+`elixir(function(mix) {
+	mix.scripts(['one.js', 'two.js'
+	], 'public/foo/bar.js');
+});`
+Will save it to `public/foo/bar.js`.  **Elixir** will also run your _ECMS6_ through the _Babel_ compiler.
+`elixir(function(mix) {
+	mix.babel(['one.js', 'two.js'
+	]);
+});`
+Just switch _scripts_ with _babel_.
