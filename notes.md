@@ -13,7 +13,7 @@
 
 ## 2
 
-Laravel allows to resolve your service directly from your _blade_ view.
+Laravel resolves your services directly from your _blade_ view.
 ```php
 Route::get('/', function(App\Stats $stats) {
 	return view('welcome', compact('stats'));
@@ -25,7 +25,7 @@ Route::get('other', function(App\Stats $stats) {
 	return view('other', compact('stats'));
 });
 ```
-It gets too verbose to have to keep passing `App\Stats $stats` to every view that needs this service class.
+This, however, gets too verbose. Having to keep passing `App\Stats $stats` to every view that needs this _service class_.
 
 One solution is to create a _view composer_:
 ```php
@@ -47,15 +47,17 @@ Route::get('other', function() {
 
 The new solution is to inject your _view composer_ directly into our view:
 
+
 * .blade.php:
 
 _Add this to your blade file_
 
 `@inject('stats', 'App\Stats')`
 
+
 * routes.php:
 
-_remove our view composer_
+_remove our view composer and_
 
 ```php
 Route::get('/', function() {
