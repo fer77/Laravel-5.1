@@ -14,61 +14,75 @@
 ## 2
 
 Laravel allows to resolve your service directly from your _blade_ view.
-`Route::get('/', function(App\Stats $stats) {
+```Route::get('/', function(App\Stats $stats) {
 	return view('welcome', compact('stats'));
-});
+});```
 
-Route::get('other', function(App\Stats $stats) {
+```Route::get('other', function(App\Stats $stats) {
 	return view('other', compact('stats'));
-});`
+});```
 It gets too verbose to have to keep passing `App\Stats $stats` to every view that needs this service class.
 
 One solution is to create a _view composer_:
-`View::composer('stats', function($view) {
+```View::composer('stats', function($view) {
 	$view->with('stats', app('App\Stats'));
-});
-Route::get('/', function() {
+});```
+```Route::get('/', function() {
 	return view('welcome');
-});
+});```
 
-Route::get('other', function() {
+```Route::get('other', function() {
 	return view('other');
-});`
+});```
 
 The new solution is to inject your _view composer_ directly into our view:
-* .blade.php:
-_Add this to your blade file_
-`@inject('stats', 'App\Stats')`
-* routes.php:
-_remove our view composer_
-`Route::get('/', function() {
-	return view('welcome');
-});
 
-Route::get('other', function() {
+* .blade.php:
+
+_Add this to your blade file_
+
+`@inject('stats', 'App\Stats')`
+
+* routes.php:
+
+_remove our view composer_
+
+```Route::get('/', function() {
+	return view('welcome');
+});```
+
+```Route::get('other', function() {
 	return view('other');
-});`
+});```
 
 ## 3
 
 **Elixir** now compiles and concatenates seperate .css .js files.
-`elixir(function(mix) {
+
+```elixir(function(mix) {
 	mix.less(['app.less', 'other.less']);
-});`
+});```
+
 now makes one _app.css_ file.
 
 **Elixir** also provides _ECMS6_ support.
-`elixir(function(mix) {
+
+```elixir(function(mix) {
 	mix.scripts(['one.js', 'two.js']);
-});`
+});```
+
 now makes one _all.js_ file.  It can also be placed somewhere else:
-`elixir(function(mix) {
+
+```elixir(function(mix) {
 	mix.scripts(['one.js', 'two.js'
 	], 'public/foo/bar.js');
-});`
+});```
+
 Will save it to `public/foo/bar.js`.  **Elixir** will also run your _ECMS6_ through the _Babel_ compiler.
-`elixir(function(mix) {
+
+```elixir(function(mix) {
 	mix.babel(['one.js', 'two.js'
 	]);
-});`
+});```
+
 Just switch _scripts_ with _babel_.
