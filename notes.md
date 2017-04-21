@@ -114,7 +114,7 @@ Just switch _scripts_ with _babel_.
 ## 4
 
 Most of the integrated API has now been integrated into Laravel 5.1.
-Remember tha in `composer.json` there are tirhird party libraries we have acces to:
+Remember tha in `composer.json` there are third party libraries we have acces to:
 
 
 1. _faker_: generates dummy data.
