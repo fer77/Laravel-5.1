@@ -144,3 +144,23 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 ```
 
 ## 5
+
+The **Faker** library gives us a random name, email, address...(reffer to faker documentation).
+
+`factory` magic function, dynamic in the arguments you pass to it:
+`php artisan tinker`:
+`factory('App\User')->make();` creates a factory for a user without persisting data to the database.
+Each user will be random each time `factory('App\User', 5)->make();`.
+If we want to persist these random users `factory('App\User', 5)->create();`
+
+We add this to our `DatabaseSeeder.php`
+
+```php
+use App\User;
+
+public function run()
+    {
+    	User::truncate();
+        factory(User::class, 50)->create();
+    }
+```
