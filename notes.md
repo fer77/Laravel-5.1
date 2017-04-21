@@ -73,7 +73,7 @@ Route::get('other', function() {
 
 ## 3
 
-**Elixir** now compiles and concatenates seperate .css .js files.
+**Elixir** now compiles and concatenates seperate .css/.js files.
 
 ```javascript
 elixir(function(mix) {
@@ -110,3 +110,37 @@ elixir(function(mix) {
 ```
 
 Just switch _scripts_ with _babel_.
+
+## 4
+
+Most of the integrated API has now been integrated into Laravel 5.1.
+Remember tha in `composer.json` there are tirhird party libraries we have acces to:
+
+
+1. _faker_: generates dummy data.
+
+2. _mockery_: for mocking classes. 
+
+```json
+"require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+```
+
+This will run _phpunit_ when a test or file within the app directory is changed.
+
+`/Feature/ExampleTest.php` For larger features.
+`Unit/ExampleTest.php` lower level features.
+
+run `vendor/bin/phpunit tests/Feature/ExampleTest.php`
+
+Each of these represent functionality that we can import into our test.
+```php
+use Illuminate\Foundation\Testing\WithoutMiddleware;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
+use Illuminate\Foundation\Testing\DatabaseTransactions;
+```
+
+## 5
