@@ -164,3 +164,9 @@ public function run()
         factory(User::class, 50)->create();
     }
 ```
+
+## 6
+
+`php artisan make:console <name>` is `php artisan make:command <name>` in Laravel 5.4
+
+This command can be and it will prepopulate the file: `php artisan make:command ShowGreeting --command="laracasts:greeting {name}"`
