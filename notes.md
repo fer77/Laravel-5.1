@@ -188,3 +188,27 @@ protected $listen = [
 ## 8 
 
 For middleware parameters add a colon and a comma seperated list of parameters  `'... admin:JaneDoe,param1,param2' ...`  These will then be passed through to your 'handle' method in your middleware  `... public function handle($request, Closure $next, $adminName, $param1, $param2) ...`
+
+## 9 
+
+`php artisan route:list` Shows a list of the app's registered routes (routes.php).
+
+We can group routes:
+
+```php
+Route::group(['prefix' => 'admin'], function() {
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+});
+```
+
+And namespace them as well:
+
+```php
+Route::group(['prefix' => 'admin', 'as' => 'Admin.'], function() {
+	Route::get('/', function () {
+	    return view('welcome');
+	});
+});
+```
