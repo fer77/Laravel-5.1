@@ -170,3 +170,18 @@ public function run()
 `php artisan make:console <name>` is `php artisan make:command <name>` in Laravel 5.4
 
 This command can be and it will prepopulate the file: `php artisan make:command ShowGreeting --command="laracasts:greeting {name}"`
+
+## 7
+
+`make:event` creates a new event class, `event:generate` generates the missing events and listeners based on registration of the new event class.
+
+```php
+...
+protected $listen = [
+	'App\Events\RegisterUser' => [
+	...
+	],
+];
+...
+```
+
