@@ -212,3 +212,7 @@ Route::group(['prefix' => 'admin', 'as' => 'Admin.'], function() {
 	});
 });
 ```
+
+## 11
+
+**Thtottle Logins** records everytime you fail a loging, keeping a counter.  After too many times it locks an account temporarily.
