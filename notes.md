@@ -216,3 +216,4 @@ Route::group(['prefix' => 'admin', 'as' => 'Admin.'], function() {
 ## 11
 
 **Thtottle Logins** records everytime you fail a loging, keeping a counter.  After too many times it locks an account temporarily.
+The controllers that handle this are already included in Laravel 5.1, but the views can be found in the documentation, simple copy paste of the routes.
