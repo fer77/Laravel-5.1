@@ -1,5 +1,7 @@
 <?php
 
+use App\Events\UserHasRegistered;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,10 +12,14 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::group(['prefix' => 'admin', 'as' => 'Admin.'], function() {
 	Route::get('/', function () {
 	    return view('welcome');
 	});
-});
 
-// dd(route('Admin.'));
+	Route::get('broadcast', function() {
+		//* Automatically refreshes evrytime a new 'user' or 'task' is created without having to refresh the page.
+		$name = Request::input('name');
+		event(new UserHasRegistered($name));
+
+		return 'Done';
+	});
