@@ -217,3 +217,35 @@ Route::group(['prefix' => 'admin', 'as' => 'Admin.'], function() {
 
 **Thtottle Logins** records everytime a user fails an attempt to loging, keeping a counter.  After too many tries it locks an account temporarily.
 The controller that handles this is already included in Laravel 5.1, but the views can be found in the documentation, simple copy paste of the routes or a php artisan command in 5.4 will add them.
+
+## 12
+
+`app/Providers/EventServiceProvider.php`  contains an array of events that we want to listen for.
+
+```php
+protected $listen = [
+        'App\Events\Event' => [
+            'App\Listeners\EventListener',
+        ],
+    ];
+```
+
+Then run `php artisan event:generate` to scan the previous array and and generate an Events/<ClassName> and a Listener.
+
+If you want a single listener to handle multiple events do this:
+
+```php
+protected $listen = [
+        'App\Events\Event' => [
+            'App\Listeners\EventListener@<methodname>',
+        ],
+    ];
+```
+
+To broadcast these events client-side:
+
+1. `config/broadcasting.php`
+2. Add `BROADCAST_DRIVER`
+3. `implements ShouldBroadcast` to our `UserHasRegistered` class.
+
+_remember that Laravel serialies thigs so we can interact with them_
