@@ -23,3 +23,5 @@ use App\Events\UserHasRegistered;
 
 		return 'Done';
 	});
+
+	Route::resource('posts', 'PostsController');
