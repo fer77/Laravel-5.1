@@ -255,3 +255,6 @@ _remember that Laravel serialies thigs so we can interact with them_
 Within the `AuthServiceProvider` we can define rules and restrictions for certain actions, like updating posts.
 Within the `PostsController` we can reference the `Gate` facade and allow or deny tasks defined in the `AuthServiceProvider`.
 In the view if authorisation needs to be performed use blades's `@can` or `@cannot`.
+
+## 14
+
