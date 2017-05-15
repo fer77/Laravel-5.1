@@ -21,7 +21,7 @@ class PostsController extends Controller
     	// 	abort(403, 'Sorry, not sorry.');
     	// }
     	
-    	Auth::user()->can('update-post', $post);
+    	// Auth::user()->can('update-post', $post);
 
     	return view('posts.show', compact('post'));
     }
