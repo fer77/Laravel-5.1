@@ -256,5 +256,13 @@ Within the `AuthServiceProvider` we can define rules and restrictions for certai
 Within the `PostsController` we can reference the `Gate` facade and allow or deny tasks defined in the `AuthServiceProvider`.
 In the view if authorisation needs to be performed use blades's `@can` or `@cannot`.
 
-## 14
+## 16
 
+Laravel's **ACL** component doesn't have any awareness of roles.
+
+1. `make:model Permission` 'edits the form', 'delete a thread', etc
+	`make:model Role` editor or manager...
+
+2. `make:migration create_roles_tables` and create 'role' and 'permission' tables, as well as a linking table to conect (create a relationship) between our two tables.
+
+3. Create the relationship between our models.
