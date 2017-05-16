@@ -9,6 +9,9 @@
     </head>
     <body>
         <h1>Welcome</h1>
+        @can('edit_forum')
+            <a href="#">Edit the forum</a>
+        @endcan
         <ul id="users">
             <li v-repeat="user: users">@{{ user.name }}</li>
         </ul>
